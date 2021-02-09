@@ -44,3 +44,18 @@ puts average([9, 47, 23, 95, 16, 52]) == 40
 # sum / length of array
 
 # END
+
+
+# further exploration
+
+# def average(arr)
+#   sum = 0.0
+
+#   arr.each { |n| sum += n }
+
+#   (sum / arr.length).round(1)
+# end
+
+# puts average([1, 6]) == 3.5
+# puts average([1, 5, 87, 45, 8, 8]) == 25.7
+# puts average([9, 47, 23, 95, 16, 52]) == 40.3

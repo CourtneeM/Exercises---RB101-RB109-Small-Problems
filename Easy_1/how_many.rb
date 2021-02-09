@@ -6,10 +6,10 @@ def count_occurrences(vehicles)
   puts vehicle_count
 end
 
-vehicles = %w[car truck car SUV truck motorcycle car motorcycle SUV car SUV truck]
+vehicles = %w[car truck car SUV truck motorcycle suv motorcycle SUV car SUV truck]
 count_occurrences(vehicles)
 
-# tally method solves this problem easily
+tally method solves this problem easily
 
 # Write a method that counts the number of occurrences of each element in a given array
 # input: an array
@@ -43,3 +43,15 @@ count_occurrences(vehicles)
 #   vehicle_count
 # END
 
+# further exploration
+
+# def count_occurrences(vehicles)
+#   vehicle_count = Hash.new(0)
+
+#   vehicles.each { |vehicle| vehicle_count[vehicle.downcase] += 1 }
+
+#   puts vehicle_count
+# end
+
+# vehicles = %w[car truck car SUV truck motorcycle suv motorcycle SUV car SUV truck]
+# count_occurrences(vehicles)
