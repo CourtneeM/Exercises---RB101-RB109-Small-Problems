@@ -35,3 +35,13 @@ p palindrome?('madam') == true
 p palindrome?('Madam') == false
 p palindrome?('madam i\'m adam') == false
 p palindrome?('356653') == true
+
+# Further Exploration
+
+def palindrome_array?(array)
+  array == array.reverse
+end
+
+def palindrome_array_or_string(arg)
+  arg == arg.reverse
+end

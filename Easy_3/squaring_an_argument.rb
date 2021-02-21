@@ -33,3 +33,14 @@ def square(num)
 end
 
 p square(5) == 25
+
+# Further Exploration
+
+def power_of_n(num, n)
+  total = 1
+  n.times { total = multiply(total, num) }
+  total
+end
+
+p power_of_n(5, 2) # => 25
+p power_of_n(8, 4) # => 4096
