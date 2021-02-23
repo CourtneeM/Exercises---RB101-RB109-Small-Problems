@@ -40,9 +40,6 @@
 
 def century(year)
   ordinals = {
-    10..20 => 'th',
-    0 => 'th',
-    4..9 => 'th',
     1 => 'st',
     2 => 'nd',
     3 => 'rd'
@@ -50,9 +47,11 @@ def century(year)
 
   century = (year.to_f / 100).ceil
   ordinal = ordinals.select do |key, value|
-    break value if key.class == Range && key.include?(century)
-    break value if key.class == Integer && century.to_s.end_with?(key.to_s)
+    break 'th' if century.digits.reverse[-2] == 1
+    break value if century.to_s.end_with?(key.to_s)
   end
+
+  ordinal = 'th' if ordinal.empty?
 
   "#{century}#{ordinal}"
 end
@@ -65,3 +64,4 @@ p century(5) == '1st'
 p century(10103) == '102nd'
 p century(1052) == '11th'
 p century(1127) == '12th'
+p century(11201) == '113th'
