@@ -29,12 +29,23 @@
 # create an array and push each char onto it
 # iterate through chars, use String#last to check for repeats
 
-def crunch(str)
-  squeezed_words = []
-  str.each_char { |char| squeezed_words << char unless squeezed_words.last == char }
-  squeezed_words.join('')
+# def crunch(str)
+#   squeezed_words = []
+#   str.each_char { |char| squeezed_words << char unless squeezed_words.last == char }
+#   squeezed_words.join('')
 
-  # str.chars.each_with_object([]) { |char, arr| arr << char unless arr.last == char }.join('')
+#   # str.chars.each_with_object([]) { |char, arr| arr << char unless arr.last == char }.join('')
+# end
+
+# p crunch('ddaaiillyy ddoouubbllee') == 'daily double'
+# p crunch('4444abcabccba') == '4abcabcba'
+# p crunch('a') == 'a'
+# p crunch('') == ''
+
+# Further Exploration
+
+def crunch(str)
+  str.gsub(/(.)\1+/, '\1')
 end
 
 p crunch('ddaaiillyy ddoouubbllee') == 'daily double'
