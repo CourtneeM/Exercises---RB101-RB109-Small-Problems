@@ -24,8 +24,24 @@
 # Tip
 # use gsub!(/[^a-z]/, " ").squeeze(" ") to replace all non-alphabetic characters with spaces, then reduce the spaces to one
 
+# def cleanup(str)
+#   str.gsub(/[^a-z]/, " ").squeeze(" ")
+# end
+
+# p cleanup("---what's my +*& line?") == ' what s my line '
+
+# Further Exploration
+
+ALPHABET = ('a'..'z').to_a
+
 def cleanup(str)
-  str.gsub(/[^a-z]/, " ").squeeze(" ")
+  str.chars.each_with_object('') do |char, cleaned_str|
+    if ALPHABET.include?(char)
+      cleaned_str << char
+    else
+      cleaned_str << ' ' unless cleaned_str[-1] == ' '
+    end
+  end
 end
 
 p cleanup("---what's my +*& line?") == ' what s my line '
