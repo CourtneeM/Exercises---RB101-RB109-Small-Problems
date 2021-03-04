@@ -33,10 +33,25 @@
 
 # Tips
 
+# def triangle(n)
+#   row = "\s" * n
+#   row.split('').each_with_index do |_, index|
+#     row[-1 + -index] = '*'
+#     puts row
+#   end
+# end
+
+# triangle(5)
+# triangle(9)
+
+# Further Exploration
+
+# upside down
+
 def triangle(n)
-  row = "\s" * n
+  row = "*" * n
   row.split('').each_with_index do |_, index|
-    row[-1 + -index] = '*'
+    row[0 + index] = "\s"
     puts row
   end
 end
