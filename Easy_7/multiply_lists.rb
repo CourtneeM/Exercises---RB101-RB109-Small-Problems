@@ -17,16 +17,24 @@
 #   - increment counter by 1
 # - return results
 
+# def multiply_list(arr1, arr2)
+#   results = []
+#   counter = 0
+
+#   arr1.size.times do
+#     results << arr1[counter] * arr2[counter]
+#     counter += 1
+#   end
+
+#   results
+# end
+
+# p multiply_list([3, 5, 7], [9, 10, 11]) == [27, 50, 77]
+
+# Further Exploration
+
 def multiply_list(arr1, arr2)
-  results = []
-  counter = 0
-
-  arr1.size.times do
-    results << arr1[counter] * arr2[counter]
-    counter += 1
-  end
-
-  results
+  arr1.zip(arr2).map { |num1, num2| num1 * num2 }
 end
 
 p multiply_list([3, 5, 7], [9, 10, 11]) == [27, 50, 77]
