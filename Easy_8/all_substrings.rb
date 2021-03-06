@@ -15,25 +15,22 @@
 #   'e'
 # ]
 
-def substrings(str)
+def leading_substrings(str)
   sub_strings = []
-  starting_position = 0
 
-  loop do
-    ending_position = 1
-
-    str.split('').each do |_|
-      sub_strings << str[starting_position, ending_position]
-      ending_position += 1
-
-      break if sub_strings[-1][-1] == str[-1]
-    end
-
-    starting_position += 1
-    break if sub_strings[-1] == str[-1]
-  end
+  str.split('').each_with_index { |_, index| sub_strings << str[0, index + 1] }
 
   sub_strings
+end
+
+def substrings(str)
+  sub_strings = []
+  (0...str.size).each do |start_index|
+    inner_substring = str[start_index..-1]
+    sub_strings << leading_substrings(inner_substring)
+  end
+
+  p sub_strings.flatten
 end
 
 p substrings('abcde') == [
