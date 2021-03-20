@@ -38,10 +38,30 @@ def rotate_array(arr)
   arr_copy.push(rotated_element)
 end
 
-p rotate_array([7, 3, 5, 2, 9, 1]) == [3, 5, 2, 9, 1, 7]
-p rotate_array(['a', 'b', 'c']) == ['b', 'c', 'a']
-p rotate_array(['a']) == ['a']
+# p rotate_array([7, 3, 5, 2, 9, 1]) == [3, 5, 2, 9, 1, 7]
+# p rotate_array(['a', 'b', 'c']) == ['b', 'c', 'a']
+# p rotate_array(['a']) == ['a']
 
-x = [1, 2, 3, 4]
-p rotate_array(x) == [2, 3, 4, 1]   # => true
-x == [1, 2, 3, 4]                 # => true
+# x = [1, 2, 3, 4]
+# p rotate_array(x) == [2, 3, 4, 1]   # => true
+# x == [1, 2, 3, 4]                 # => true
+
+# -----------------------------------------------------------------------------
+
+# Further Exploration
+
+# def rotate_str(str)
+#   rotate_array(str.chars).join
+# end
+
+# p rotate_str('hello, world') == 'ello, worldh'
+# p rotate_str('peter likes pizza') == 'eter likes pizzap'
+# p rotate_str('he walked the dog very far') == 'e walked the dog very farh'
+
+# def rotate_int(num)
+#   rotate_array(num.digits.reverse).join.to_i
+# end
+
+# p rotate_int(123456) == 234561
+# p rotate_int(98756) == 87569
+# p rotate_int(852) == 528
