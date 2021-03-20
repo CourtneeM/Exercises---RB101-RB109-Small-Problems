@@ -1,7 +1,13 @@
+def rotate_array(arr)
+  arr_copy = arr.dup
+  rotated_element = arr_copy.shift
+  arr_copy.push(rotated_element)
+end
+
 def rotate_rightmost_digits(nums, n)
-  num_to_rotate = nums.digits.reverse[-n]
-  arr = nums.digits.reverse.reject { |num| num == num_to_rotate }
-  arr.push(num_to_rotate).join.to_i
+  digits = nums.digits.reverse
+  digits[-n, n] = rotate_array(digits[-n, n])
+  digits.join.to_i
 end
 
 p rotate_rightmost_digits(735291, 1) == 735291
