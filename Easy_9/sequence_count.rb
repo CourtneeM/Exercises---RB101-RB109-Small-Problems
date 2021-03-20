@@ -1,7 +1,9 @@
+require 'pry'
+
 def sequence(count, num)
   results = []
   multiply = 1
-
+  binding.pry
   count.times do
     results << num * multiply
     multiply += 1
