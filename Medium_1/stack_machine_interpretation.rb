@@ -76,6 +76,7 @@ def minilang(program)
   stack = []
 
   program.split.each do |step|
+    p step
     case step
     when 'PUSH'  then stack.push(register)
     when 'ADD'   then register += stack.pop
@@ -87,8 +88,23 @@ def minilang(program)
     when 'PRINT' then puts register
     else              register = step.to_i
     end
+    p stack
   end
 end
+
+# =============================================================================
+
+# Further Exploration
+# (3 + (4 * 5) - 7) / (5 % 3)
+
+minilang("3 PUSH 5 MOD PUSH 4 PUSH 5 MULT PUSH 7 PUSH 3 SUB ADD DIV PRINT")
+# [3] 5 MOD => 2
+# [2, 4] 5 MULT => 20
+# [2, 20, 7] 3 SUB => -4
+# [2, 20] -4 ADD => 16
+# [2] 16 DIV => 8
+
+# =============================================================================
 
 # minilang('PRINT')
 # # 0
@@ -121,8 +137,3 @@ end
 
 # minilang('6 PUSH')
 # # (nothing printed; no PRINT commands)
-
-# =============================================================================
-
-# Further Exploration
-# (3 + (4 * 5) - 7) / (5 % 3)
