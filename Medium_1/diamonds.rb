@@ -43,21 +43,38 @@
 #   - output star * stars_per_row
 #   - increment stars_per_row by 2 if index < half, otherwise, decrement stars_per_row by 2
 
-def diamond(n)
-  star = '*'
-  stars_per_row = 1
-  half = (n / 2.0).ceil
+# def diamond(n)
+#   star = '*'
+#   stars_per_row = 1
+#   half = (n / 2.0).ceil
 
-  1.upto(n) do |iteration_num|
-    puts (star * stars_per_row).center(n)
-    iteration_num < half ? stars_per_row += 2 : stars_per_row -= 2
-  end
-end
+#   1.upto(n) do |iteration_num|
+#     puts (star * stars_per_row).center(n)
+#     iteration_num < half ? stars_per_row += 2 : stars_per_row -= 2
+#   end
+# end
 
-diamond(1)
-diamond(3)
-diamond(9)
+# diamond(1)
+# diamond(3)
+# diamond(9)
 
 # Further Exploration
 
 # look for index 0 or -1 of that row
+
+def diamond(n)
+  half = (n / 2.0).ceil
+  spaces_per_row = 1
+
+  1.upto(n) do |iteration_num|
+    if iteration_num == 1 || iteration_num == n
+      puts '*'.center(n)
+    else
+      puts ('*' + ("\s" * spaces_per_row) + '*').center(n)
+      iteration_num < half ? spaces_per_row += 2 : spaces_per_row -= 2
+    end
+  end
+end
+
+diamond(5)
+diamond(9)
