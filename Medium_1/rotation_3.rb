@@ -31,27 +31,47 @@
 # - need to modify the iterated array
 #   - save the return value of each iteration to the iterated array
 
-def rotate_array(arr)
-  arr_copy = arr.dup
-  rotated_element = arr_copy.shift
-  arr_copy.push(rotated_element)
-end
+# def rotate_array(arr)
+#   arr_copy = arr.dup
+#   rotated_element = arr_copy.shift
+#   arr_copy.push(rotated_element)
+# end
 
-def rotate_rightmost_digits(nums, n)
-  digits = nums.digits.reverse
-  digits[-n, n] = rotate_array(digits[-n, n])
-  digits.join.to_i
-end
+# def rotate_rightmost_digits(nums, n)
+#   digits = nums.digits.reverse
+#   digits[-n, n] = rotate_array(digits[-n, n])
+#   digits.join.to_i
+# end
+
+# def max_rotation(nums)
+#   n = nums.digits.length
+#   digits = nums.digits.reverse.join.to_i
+
+#   n.times do
+#     digits = rotate_rightmost_digits(digits, n)
+#     n -= 1
+#   end
+#   digits
+# end
+
+# p max_rotation(735291) == 321579
+# p max_rotation(3) == 3
+# p max_rotation(35) == 53
+# p max_rotation(105) == 15 # the leading zero gets dropped
+# p max_rotation(8_703_529_146) == 7_321_609_845
+
+# Further Exploration - without methods from previous exercises
 
 def max_rotation(nums)
-  n = nums.digits.length
-  digits = nums.digits.reverse.join.to_i
-
-  n.times do
-    digits = rotate_rightmost_digits(digits, n)
-    n -= 1
+  digits = nums.digits.reverse
+  n = 0
+  digits.size.times do
+    rotated_num = digits[n..-1].shift
+    digits.delete_at(n)
+    digits = digits.push(rotated_num)
+    n += 1
   end
-  digits
+  digits.join.to_i
 end
 
 p max_rotation(735291) == 321579
