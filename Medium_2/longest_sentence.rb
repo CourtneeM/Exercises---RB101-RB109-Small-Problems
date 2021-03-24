@@ -4,7 +4,7 @@ def longest_sentence(paragraph)
   largest_sentence = sentences.select do |sentence|
     sentence.split.size == largest_sentence_size
   end
-  puts largest_sentence.join(' ')
+  puts largest_sentence.join(' ').strip
   puts largest_sentence_size
 end
 

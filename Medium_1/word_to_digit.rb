@@ -1,43 +1,61 @@
-# input: a string
-# output: a string with the number strings converted to their integer form
+# Problem
+#   - Write a method that accepts a string and replaces the words representing 1-9 with their digit form.
+#     Output the string with only the number words changed.
+
+# Input: a string
+# Output: a string
+
+# Questions
+#   - What are the keywords to look for that need to be replaced?
+#     - 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'
+#   - What is replacing the number words?
+#     - '1', '2', '3', '4', '5', '6', '7', '8', '9'
+
+# Rules
+#   Explicit requirements
+#     - Replace the number words in the input string with their digit form.
+#   Implicit requirements
+#     - An empty string returns an empty string.
+#     - Replace the numbers in place, do not join them together.
 
 # Test Cases
+
 # word_to_digit('Please call me at five five five one two three four. Thanks.') == 'Please call me at 5 5 5 1 2 3 4. Thanks.'
 
+# word_to_digit('The correct address is one seven seven eight Easy Street.') == 'The correct address is 1 7 7 8 Easy Street.'
+
+# word_to_digit('Five past four is when we should meet up.') == '5 past 4 is when we should meet up.'
+
+# word_to_digit('Five. Four. Seven nine eight.') == '5. 4. 7 9 8.'
+# word_to_digit('') == ''
+
+# Data Structure
+#   - input: string
+#   - output: string
+
 # Algorithm
-# - create a constant called STRING_TO_DIGITS and set equal to { zero: 0, one: 1, etc... }
-# - iterate over the split input string using map
-#   - if the current element is a key in STRING_TO_DIGITS, return the value of that key
-#   - otherwise return the current element
-# - join the return value of map
+#   - Create a constant called DIGITS and set equal to a hash where the keys a the number words 1-9
+#     and their values are their digit form
+#   - For each key in DIGITS
+#     - Check if that key matches any word in the input string
+#       - Make sure the compared key is case insensitive
+#     - Replace the input string word with the value associated with the matching key
 
 # Tips
 
-STRING_TO_DIGITS = { 'zero' => '0', 'one' => '1', 'two' => '2', 'three' => '3', 'four' => '4',
-                     'five' => '5', 'six' => '6', 'seven' => '7', 'eight' => '8', 'nine' => '9' }.freeze
+DIGITS = { 'one' => '1', 'two' => '2', 'three' => '3', 'four' => '4', 'five' => '5',
+           'six' => '6', 'seven' => '7', 'eight' => '8', 'nine' => '9' }.freeze
 
-# def word_to_digit(str)
-#   keys = STRING_TO_DIGITS.keys
-#   str.split.map do |word|
-#     if keys.include?(word)
-#       STRING_TO_DIGITS[word]
-#     elsif word.end_with?('.') && keys.include?(word[0..-2])
-#       STRING_TO_DIGITS[word[0..-2]] + '.'
-#     else
-#       word
-#     end
-#   end.join(' ')
-# end
+def word_to_digit(str)
+  DIGITS.each { |word_number, digit| str.gsub!(/\b#{word_number}\b/i, digit) }
+  str
+end
 
-# Further Exploration
-# In progress
+p word_to_digit('Please call me at five five five one two three four. Thanks.') == 'Please call me at 5 5 5 1 2 3 4. Thanks.'
 
-# def word_to_digit(str)
-#   STRING_TO_DIGITS.keys.each do |word|
-#     str.gsub!(/\b#{word}\b/i, STRING_TO_DIGITS[word])
-#   end
-#   str_index = str.split.select { |word| word if word.to_i.to_s == word }
-#   digits_index = str_index.reject(&:nil?)
-# end
+p word_to_digit('The correct address is one seven seven eight Easy Street.') == 'The correct address is 1 7 7 8 Easy Street.'
 
-# p word_to_digit('Please call me at Five five five One two three four. Thanks.') #== 'Please call me at 5 5 5 1 2 3 4. Thanks.'
+p word_to_digit('Five past four is when we should meet up.') == '5 past 4 is when we should meet up.'
+
+p word_to_digit('Five. Four. Seven nine eight.') == '5. 4. 7 9 8.'
+p word_to_digit('') == ''
