@@ -36,8 +36,6 @@
 #   - If parentheses is empty, return true.
 #   - Otherwise return false.
 
-require 'pry'
-
 def balanced?(str)
   parentheses = str.chars.select { |char| char =~ /[()]/ }
 
@@ -58,3 +56,36 @@ p balanced?('((What)) (is this))?') == false
 p balanced?('Hey!') == true
 p balanced?(')Hey!(') == false
 p balanced?('What ((is))) up(') == false
+
+# Further Exploration
+
+# def balanced?(str)
+#   parentheses = str.chars.select { |char| char =~ /[()]/ }
+#   square_brackets = str.chars.select { |char| char =~ /[\[\]]/ }
+#   curly_brackets = str.chars.select { |char| char =~ /[{}]/ }
+
+#   loop do
+#     parentheses = parentheses.join
+#     square_brackets = square_brackets.join
+#     curly_brackets = curly_brackets.join
+
+#     break unless parentheses.include?('()') ||
+#                  square_brackets.include?('[]') ||
+#                  curly_brackets.include?('{}')
+
+#     parentheses = parentheses.split('()')
+#     square_brackets = square_brackets.split('[]')
+#     curly_brackets = curly_brackets.split('{}')
+#   end
+
+#   parentheses.empty? && square_brackets.empty? && curly_brackets.empty?
+# end
+
+# p balanced?('What [is] this?') == true
+# p balanced?('What is} this?') == false
+# p balanced?('What (is this?') == false
+# p balanced?('{{What} (is this)}?') == true
+# p balanced?('([What)) (is this])?') == false
+# p balanced?('Hey!') == true
+# p balanced?(')Hey!(') == false
+# p balanced?('What [(is)]] up(') == false
